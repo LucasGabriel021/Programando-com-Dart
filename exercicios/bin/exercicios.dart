@@ -2,6 +2,7 @@ import 'package:exercicios/exercicios.dart' as exercicios;
 import 'dart:io';
 
 void main() {
+  // OBS: dart run --> Rodar no terminal o Dart
   // Exercício de Números Impares
   int soma = 0;
   for(int i = 1; i < 100; i+=2) {
