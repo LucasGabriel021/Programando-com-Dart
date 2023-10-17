@@ -1,6 +1,8 @@
 import 'package:segundo_projeto/segundo_projeto.dart' as segundo_projeto;
 
 void main() {
+  // Funções
+  String nome = "Laranja";
   double peso = 100.2;
   String corFruta = "Verde e Amarela";
   String sabor = "Doce e cítrica";
@@ -12,6 +14,9 @@ void main() {
 
   int quantosDias = funcQuantosDiasMadura(diasDaColheita);
   print("Dias para a fruta esta madura $quantosDias");
+
+  Fruta fruta01 = Fruta(nome, peso, corFruta, sabor, diasDaColheita);
+  print(fruta01.nome);
 }
 
 /*
@@ -54,4 +59,16 @@ int funcQuantosDiasMadura(int dias) {
   int diasParaMadura = 30;
   int quantosDiasFaltam = dias - 30;
   return quantosDiasFaltam;
+}
+
+// Classes
+class Fruta {
+  String nome;
+  double peso;
+  String cor;
+  String sabor;
+  int desdeColheita;
+  bool? isMadure; // isMadure é uma informação que é calculada, or tanto ela pode ser nula
+
+  Fruta(this.nome, this.peso, this.cor, this.sabor, this.desdeColheita); // This referere ao objeto atual ou instancia da classe
 }
