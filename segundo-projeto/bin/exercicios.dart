@@ -7,6 +7,13 @@ void main() {
 
   Cachorro thor = Cachorro();
   thor.emitirSom();
+
+  ContaBancaria pessoa011 = ContaBancaria(1300, 88888888);
+  pessoa011.depositar(400);
+  pessoa011.sacar(500);
+  ContaPoupanca pessoa012 = ContaPoupanca(1300, 88888888, 20);
+  print("O total a pagar de juros de acordo com os meses é ${pessoa012.calcularJuros(3)}");
+
 }
 
 
@@ -44,3 +51,33 @@ class Gato extends Animal {
   }
 }
 
+
+// Exercício 01
+class ContaBancaria {
+  double saldo;
+  int numeroConta;
+
+  ContaBancaria(this.saldo, this.numeroConta);
+
+  void depositar(double valor) {
+    print("O valor depositado foi: $valor na conta $numeroConta o saldo da conta é de ${saldo + valor}");
+  }
+
+  void sacar(double valor) {
+    print("O valor sacado foi de $valor restando na conta $numeroConta o saldo de ${saldo - valor}");
+  }
+}
+
+class ContaPoupanca extends ContaBancaria{
+  double taxaAdicional;
+
+  ContaPoupanca(double saldo, int numeroConta, this.taxaAdicional) : super(saldo, numeroConta);
+
+  double calcularJuros(int quantidade) {
+    return quantidade + taxaAdicional;
+  }
+
+  double adiconarJuros(double valor) {
+    return saldo + valor;
+  }
+}
