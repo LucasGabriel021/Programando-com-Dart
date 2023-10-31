@@ -30,6 +30,22 @@ void main() {
 
   Legumes legume01 = Legumes("Mandioca", 2.4, "Marrom", true);
   legume01.cozinhar();
+
+  Nozes noze01 = Nozes("Castanha do Pará", 30, "Marrom", "Doce", 30, 10);
+  noze01.exibirNome();
+
+  Nozes noze02 = Nozes("Macadâmia", 2.0, "Branco", "Doce", 80, 5);
+  Fruta fruta05 = Fruta("Banana", 75.0, "Amarela", "Doce", 20);
+  Legumes legume02 = Legumes("Macaxeira", 1200.0, "Marrom", true);
+  Citrica citrica01 = Citrica("Limão", 100.0, "Verde", "Azedo", 40, 9);
+
+  print("Mostrando métodos dos objetos criados!");
+  noze02.verAlimento();
+  fruta05.verAlimento();
+  legume02.verAlimento();
+  citrica01.verAlimento();
+  legume02.cozinhar();
+  fruta05.fazerSuco();
 }
 
 /*
@@ -74,6 +90,7 @@ int funcQuantosDiasMadura(int dias) {
   return quantosDiasFaltam;
 }
 
+
 // Classes
 // Superclasse
 class Alimento {
@@ -88,8 +105,8 @@ class Alimento {
   }
 }
 
-// Subclasses
 
+// Subclasses
 class Fruta extends Alimento { // Extend herda características
   String sabor;
   int desdeColheita;
@@ -120,6 +137,10 @@ class Fruta extends Alimento { // Extend herda características
 
   void fazerSuco() {
     print("Você fez um ótimo suco de $nome!");
+  }
+
+  void imprimirNome() {
+    print("Nome da Noz é: $nome");
   }
 }
 
@@ -161,4 +182,9 @@ class Nozes extends Fruta{
   int porcentagemOleoNatural;
 
   Nozes(String nome, double peso, String cor, String sabor, int desdeColheita, this.porcentagemOleoNatural) : super (nome, peso, cor, sabor, desdeColheita);
+
+  void exibirNome() {
+    print("Utilizando o método super para invocar o método da classe pai: ");
+    super.imprimirNome(); // Invocando um método da classe pai
+  }
 }
