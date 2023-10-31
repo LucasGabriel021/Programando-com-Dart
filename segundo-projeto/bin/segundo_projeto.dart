@@ -46,6 +46,10 @@ void main() {
   citrica01.verAlimento();
   legume02.cozinhar();
   fruta05.fazerSuco();
+
+  // citrica01.assar(); Classe Abstrata
+
+
 }
 
 /*
@@ -107,7 +111,7 @@ class Alimento {
 
 
 // Subclasses
-class Fruta extends Alimento { // Extend herda características
+class Fruta extends Alimento implements Bolo { // Extend herda características
   String sabor;
   int desdeColheita;
   bool? isMadure; // isMadure é uma informação que é calculada, portanto ela pode ser nula
@@ -142,9 +146,24 @@ class Fruta extends Alimento { // Extend herda características
   void imprimirNome() {
     print("Nome da Noz é: $nome");
   }
+
+  @override
+  void separarIngredientes() {
+    print("Catar frutas");
+  }
+
+  @override
+  void prepararMassa() {
+    print("Misturar a fruta $nome com farinha, açucar e ovos");
+  }
+
+  @override
+  void assar() {
+    print("Colocar no forno");
+  }
 }
 
-class Legumes extends Alimento {
+class Legumes extends Alimento implements Bolo { // Utilizar classe abstrata com o implements
   bool isPrecisaCozinhar;
 
   Legumes(String nome, double peso, String cor, this.isPrecisaCozinhar) : super(nome, peso, cor);
@@ -155,6 +174,21 @@ class Legumes extends Alimento {
     } else {
       print("O legume $nome não precisa cozinhar");
     }
+  }
+
+  @override
+  void separarIngredientes() {
+    // TODO: implement separarIngredientes
+  }
+
+  @override
+  void prepararMassa() {
+    // TODO: implement prepararMassa
+  }
+
+  @override
+  void assar() {
+    // TODO: implement assar
   }
 }
 
@@ -176,6 +210,13 @@ class Citrica extends Fruta {
   void existeRefri(bool existe) {
     existe == true ? print("Existe refirgerante da fruta $nome") : print("Não existe refrigerante desta fruta $nome"); // Operador ternário
   }
+
+  // O trecho a baixo representa o poliformismo, que é sobreecrever o método
+  @override
+  void prepararMassa() {
+    print("Descascar fruta $nome antes");
+    super.prepararMassa();
+  }
 }
 
 class Nozes extends Fruta{
@@ -187,4 +228,12 @@ class Nozes extends Fruta{
     print("Utilizando o método super para invocar o método da classe pai: ");
     super.imprimirNome(); // Invocando um método da classe pai
   }
+}
+
+abstract class Bolo {
+  void separarIngredientes();
+
+  void prepararMassa();
+
+  void assar();
 }
